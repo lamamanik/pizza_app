@@ -1,9 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { v4: uuidv4 } = require('uuid');
-const stripe = require('stripe')(
-  'sk_test_51KqXraSGYXNblOKgd8flLFUCYVhMX2Fs1F7o4m2WA4gKs3juKOirSB203vsal2qYXXscVcjULD9SQmzEa6BiuimD00hG7xe5pa'
-);
+const stripe = require('stripe')(process.env.STRIPE);
 
 router.post('/placeorder', async (req, res) => {
   const { token, subtotal, currentUser, cartItems } = req.body;
