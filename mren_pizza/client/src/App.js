@@ -8,6 +8,7 @@ import Homescreen from './screens/Homescreen';
 import Cartscreen from './screens/Cartscreen';
 import Registerscreen from './screens/Registerscreen';
 import Loginscreen from './screens/Loginscreen';
+import Ordersscreen from './screens/Ordersscreen';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/cart" exact element={<Cartscreen />} />
           <Route path="/register" exact element={<Registerscreen />} />
           <Route path="/login" exact element={<Loginscreen />} />
+          <Route path="/orders" exact element={<Ordersscreen />} />
         </Routes>
       </BrowserRouter>
     </div>

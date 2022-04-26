@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllPizzas } from '../actions/pizzaActions';
 import Loading from '../components/Loading';
 import Error from '../components/Error';
+import Filter from '../components/Filter';
 
 export default function Homescreen() {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ export default function Homescreen() {
   }, []);
   return (
     <div>
+      <Filter />
       <div className="row justify-content-center">
         {loading ? (
           <Loading />
