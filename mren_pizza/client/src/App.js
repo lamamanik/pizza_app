@@ -9,19 +9,24 @@ import Cartscreen from './screens/Cartscreen';
 import Registerscreen from './screens/Registerscreen';
 import Loginscreen from './screens/Loginscreen';
 import Ordersscreen from './screens/Ordersscreen';
+import Adminscreen from './screens/Adminscreen';
 
 function App() {
   return (
     <div className="App">
       <Navbar />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" exact element={<Homescreen />} />
-          <Route path="/cart" exact element={<Cartscreen />} />
-          <Route path="/register" exact element={<Registerscreen />} />
-          <Route path="/login" exact element={<Loginscreen />} />
-          <Route path="/orders" exact element={<Ordersscreen />} />
-        </Routes>
+        <Route path="/" exact component={Homescreen} />
+        <Route path="/cart" exact component={Cartscreen} />
+        <Route path="/register" exact component={Registerscreen} />
+        <Route path="/login" exact component={Loginscreen} />
+        <Route path="/orders" exact component={Ordersscreen} />
+        <Route path="/admin" component={Adminscreen} />
+        {/* <Route path="/cart" exact element={< />} />
+        <Route path="/" exact element={< />} />
+        <Route path="/" exact element={< />} />
+        <Route path="/" exact element={< />} />
+  <Route path="/" element={< />} /> */}
       </BrowserRouter>
     </div>
   );

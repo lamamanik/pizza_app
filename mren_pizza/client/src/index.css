@@ -53,3 +53,24 @@ select {
 input {
   margin-top: 11px !important;
 }
+.adminfunctions{
+  padding: 10px;
+  background-color: rgb(7, 7, 82);
+}
+.adminfunctions li{
+  list-style-type: none !important;
+  display: inline !important;
+  color: aliceblue  !important;
+}
+.adminfunctions li a{
+  text-decoration: none ;
+  color: aliceblue  !important;
+  line-height: 25px;
+  padding: 35px;
+}
+.adminfunctions li a:hover{
+  transition:  width 2s, height 2s, transform 2s !important;
+  font-size: 17px;
+  transition-delay: 1s !important;
+  color: greenyellow !important;
+}
