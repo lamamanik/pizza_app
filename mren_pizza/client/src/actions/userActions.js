@@ -27,3 +27,23 @@ export const logoutUser = () => (dispatch) => {
   localStorage.removeItem('currentUser');
   window.location.href = '/login';
 };
+
+export const getAllUsers = () => async (dispatch, getState) => {
+  const currentUser = getState().loginUserReducer.currentUser;
+  dispatch({
+    type: 'GET_ALLUSERS_REQUEST',
+  });
+  try {
+    const response = await axios.get('/api/users/getallusers');
+    console.log(response);
+    dispatch({
+      type: 'GET_ALLUSERS_SUCCESS',
+      payload: response.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: 'GET_ALLUSERS_FAILED',
+      payload: error,
+    });
+  }
+};

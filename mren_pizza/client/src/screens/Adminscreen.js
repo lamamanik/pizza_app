@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, Route, Switch } from 'react-router-dom';
 import Addpizza from './Addpizza';
+import Editpizza from './Editpizza';
 import Orderslist from './Orderslist';
 import Pizzaslist from './Pizzaslist';
 import Userslist from './userslist';
@@ -53,7 +54,11 @@ export default function Adminscreen() {
               <Route path="/admin/orderslist" exact component={Orderslist} />
               <Route path="/admin/pizzaslist" exact component={Pizzaslist} />
               <Route path="/admin/addpizza" exact component={Addpizza} />
-
+              <Route
+                path="/admin/editpizza/:pizzaid"
+                exact
+                component={Editpizza}
+              />
               {/*<Route path="" exact element={< />} />
               <Route path="/admin/" exact element={< />} />
               <Route path="/admin/" exact element={< />} /> */}
