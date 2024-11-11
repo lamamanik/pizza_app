@@ -22,7 +22,7 @@ export default function Checkout({ subtotal }) {
         amount={subtotal * 100}
         shippingAddress
         token={tokenHandler}
-        stripeKey="pk_test_51KsQyGCzHo9mfhtGFrBI1R1tBO4wLKmf4QPGdtlTzKyww3BCFbzq0C5bFMOq8JlMIGIZNdBqfApSlskzx36ZU91B00VkwkCJKe"
+        stripeKey="pk_test_51Q0nxoRohfSU9QxAT12gBn3J32iFD9Bhx2ijtwsLpfls3tUm2NtyitmaSkKzCUav9VzTVnQftypWlnm3clzS6TVh00xA4w4q3d"
         currency="NPR"
       >
         <button className="btn">Pay now</button>

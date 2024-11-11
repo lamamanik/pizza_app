@@ -8,7 +8,10 @@ const orderSchema = mongoose.Schema(
     shippingAddress: { type: Object },
     orderAmount: { type: Number, require },
     isDelivered: { type: Boolean, require, default: false },
-    transactionId: { type: String, require },
+    transactionId: { type: String, 
+      // require
+
+     },
   },
   { timestamps: true }
 );

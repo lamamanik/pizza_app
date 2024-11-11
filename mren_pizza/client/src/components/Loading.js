@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export default function Loading() {
   return (
@@ -6,7 +6,7 @@ export default function Loading() {
       <div
         className="spinner-border"
         role="status"
-        style={{ height: '100px', width: '100px', marginTop: '100px' }}
+        style={{ height: "100px", width: "100px", marginTop: "100px" }}
       ></div>
     </div>
   );

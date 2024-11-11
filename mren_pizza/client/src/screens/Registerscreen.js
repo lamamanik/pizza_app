@@ -1,20 +1,23 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { registerUser } from '../actions/userActions';
-import Error from '../components/Error';
-import Loading from '../components/Loading';
-import Success from '../components/Success';
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { registerUser } from "../actions/userActions";
+import Error from "../components/Error";
+import Loading from "../components/Loading";
+import Success from "../components/Success";
+import { useHistory } from "react-router-dom";
 export default function Registerscreen() {
-  const [name, setname] = useState('');
-  const [email, setemail] = useState('');
-  const [password, setpassword] = useState('');
-  const [cpassword, setcpassword] = useState('');
+  const history = useHistory();
+  const [name, setname] = useState("");
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
+  const [cpassword, setcpassword] = useState("");
   const registerstate = useSelector((state) => state.registerUserReducer);
   const { loading, success, error } = registerstate;
   const dispatch = useDispatch();
+
   function register() {
     if (password != cpassword) {
-      alert('password not matching!');
+      alert("password not matching!");
     } else {
       const user = {
         name,
@@ -23,13 +26,14 @@ export default function Registerscreen() {
       };
       console.table(user);
       dispatch(registerUser(user));
+      history.push("/login");
     }
   }
   return (
     <div>
       <div className="row justify-content-center mt-5 ">
         <div className="col-md-5 mt-5 text-left shadow-lg p-3 mb-5 bg-white rounded">
-          <h2 style={{ fontSize: '35px' }} className="m-2">
+          <h2 style={{ fontSize: "35px" }} className="m-2">
             Register Now
           </h2>
           {loading && <Loading />}
@@ -77,18 +81,17 @@ export default function Registerscreen() {
               required
             />
             <button className="btn form-control mt-3" onClick={register}>
-              {' '}
+              {" "}
               Register
             </button>
             <a
               href="/login"
               style={{
-                color: 'Green',
-                textDecoration: 'none',
-                fontFamily: 'bold',
+                color: "Green",
+                textDecoration: "none",
+                fontFamily: "bold",
               }}
-              className="mt-2"
-            >
+              className="mt-2">
               Click to login
             </a>
           </div>

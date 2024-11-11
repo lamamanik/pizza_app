@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllPizzas } from '../actions/pizzaActions';
 import Loading from '../components/Loading';
 import Error from '../components/Error';
-import Filter from '../components/Filter';
+import Filter from '../components/Filter'; //k neareast neighbour algorithm
 
 export default function Homescreen() {
   const dispatch = useDispatch();

@@ -1,16 +1,21 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { addToCart } from '../actions/cartActions';
-import { logoutUser } from '../actions/userActions';
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { logoutUser } from "../actions/userActions";
 
 export default function Navbar() {
   const cartstate = useSelector((state) => state.cartReducer);
   const userstate = useSelector((state) => state.loginUserReducer);
   const { currentUser } = userstate;
   const dispatch = useDispatch();
+
+  // Dashboard navigation function
+  const goToDashboard = () => {
+    window.location.href = "/admin"; // Redirect to /admin route
+  };
+
   return (
-    <div>
-      <nav className="navbar navbar-expand-lg navbar-light shadow-lg p-3 mb-5 bg-white rounded">
+    <div className="mt-5">
+      <nav className="container  mx-auto navbar navbar-expand-lg shadow-lg p-3 bg-white rounded mb-4">
         <div>
           <a className="navbar-brand" href="/">
             PizzAhm
@@ -30,12 +35,12 @@ export default function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ">
             {currentUser ? (
-              <div className="dropdown mt-2">
+              <div className="dropdown mt-2 ">
                 <a
                   style={{
-                    color: 'black',
-                    textDecoration: 'none',
-                    fontFamily: 'bold',
+                    color: "black",
+                    textDecoration: "none",
+                    fontFamily: "bold",
                   }}
                   className="dropdown-toggle"
                   type="button"
@@ -62,6 +67,15 @@ export default function Navbar() {
                   >
                     <li>Logout</li>
                   </a>
+                  {currentUser.isAdmin && ( // Only show if the user is an admin
+                    <a
+                      className="dropdown-item"
+                      href="#"
+                      onClick={goToDashboard} // Call goToDashboard directly on click
+                    >
+                      <li>Dashboard</li>
+                    </a>
+                  )}
                 </div>
               </div>
             ) : (
@@ -71,10 +85,9 @@ export default function Navbar() {
                 </a>
               </li>
             )}
-
-            <li className="nav-item">
+            <li className="nav-item mr-4">
               <a className="nav-link" href="/cart">
-                Cart{' '}
+                Cart{" "}
                 <span>
                   <mark>
                     <b>{cartstate.cartItems.length}</b>

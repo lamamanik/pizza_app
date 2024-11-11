@@ -1,18 +1,18 @@
-import axios from 'axios';
+import axios from "axios";
 export const getAllPizzas = () => async (dispatch) => {
   dispatch({
-    type: 'GET_PIZZAS_REQUEST',
+    type: "GET_PIZZAS_REQUEST",
   });
   try {
-    const response = await axios.get('/api/pizzas/getallpizzas');
+    const response = await axios.get("/api/pizzas/getallpizzas");
     console.log(response);
     dispatch({
-      type: 'GET_PIZZAS_SUCCESS',
+      type: "GET_PIZZAS_SUCCESS",
       payload: response.data,
     });
   } catch (error) {
     dispatch({
-      type: 'GET_PIZZAS_FAILED',
+      type: "GET_PIZZAS_FAILED",
       payload: error,
     });
   }
@@ -20,18 +20,18 @@ export const getAllPizzas = () => async (dispatch) => {
 
 export const getPizzaById = (pizzaid) => async (dispatch) => {
   dispatch({
-    type: 'GET_PIZZABYID_REQUEST',
+    type: "GET_PIZZABYID_REQUEST",
   });
   try {
-    const response = await axios.post('/api/pizzas/getpizzabyid', { pizzaid });
+    const response = await axios.post("/api/pizzas/getpizzabyid", { pizzaid });
     console.log(response);
     dispatch({
-      type: 'GET_PIZZABYID_SUCCESS',
+      type: "GET_PIZZABYID_SUCCESS",
       payload: response.data,
     });
   } catch (error) {
     dispatch({
-      type: 'GET_PIZZABYID_FAILED',
+      type: "GET_PIZZABYID_FAILED",
       payload: error,
     });
   }
@@ -40,60 +40,60 @@ export const getPizzaById = (pizzaid) => async (dispatch) => {
 export const filterPizzas = (searchkey, category) => async (dispatch) => {
   var filteredPizzas;
   dispatch({
-    type: 'GET_PIZZAS_REQUEST',
+    type: "GET_PIZZAS_REQUEST",
   });
   try {
-    const response = await axios.get('/api/pizzas/getallpizzas');
+    const response = await axios.get("/api/pizzas/getallpizzas");
     filteredPizzas = response.data.filter((pizza) =>
       pizza.name.toLowerCase().includes(searchkey)
     );
-    if (category != 'all') {
+    if (category != "all") {
       filteredPizzas = response.data.filter(
         (pizza) => pizza.category.toLowerCase() == category
       );
     }
     dispatch({
-      type: 'GET_PIZZAS_SUCCESS',
+      type: "GET_PIZZAS_SUCCESS",
       payload: filteredPizzas,
     });
   } catch (error) {
     dispatch({
-      type: 'GET_PIZZAS_FAILED',
+      type: "GET_PIZZAS_FAILED",
       payload: error,
     });
   }
 };
 
 export const addPizza = (pizza) => async (dispatch) => {
-  dispatch({ type: 'ADD_PIZZA_REQUEST' });
+  dispatch({ type: "ADD_PIZZA_REQUEST" });
   try {
-    const response = await axios.post('/api/pizzas/addpizza', { pizza });
+    const response = await axios.post("/api/pizzas/addpizza", { pizza });
     console.log(response);
-    dispatch({ type: 'ADD_PIZZA_SUCCESS' });
+    dispatch({ type: "ADD_PIZZA_SUCCESS" });
   } catch (error) {
-    dispatch({ type: 'ADD_PIZZA_FAILED', payload: error });
+    dispatch({ type: "ADD_PIZZA_FAILED", payload: error });
   }
 };
 export const editPizza = (editedpizza) => async (dispatch) => {
-  dispatch({ type: 'EDIT_PIZZA_REQUEST' });
+  dispatch({ type: "EDIT_PIZZA_REQUEST" });
   try {
-    const response = await axios.post('/api/pizzas/editpizza', { editedpizza });
+    const response = await axios.post("/api/pizzas/editpizza", { editedpizza });
     console.log(response);
-    dispatch({ type: 'EDIT_PIZZA_SUCCESS' });
-    window.location.href = '/admin/pizzaslist';
+    dispatch({ type: "EDIT_PIZZA_SUCCESS" });
+    window.location.href = "/admin/pizzaslist";
   } catch (error) {
-    dispatch({ type: 'EDIT_PIZZA_FAILED', payload: error });
+    dispatch({ type: "EDIT_PIZZA_FAILED", payload: error });
   }
 };
 
 export const deletePizza = (pizzaid) => async (dispatch) => {
   try {
-    const response = await axios.post('/api/pizzas/deletepizza', { pizzaid });
-    alert('pizza deleted successfully');
+    const response = await axios.post("/api/pizzas/deletepizza", { pizzaid });
+    alert("pizza deleted successfully");
     console.log(response);
     window.location.reload();
   } catch (error) {
-    alert('Unable to delete pizza');
+    alert("Unable to delete pizza");
     console.log(error);
   }
 };
